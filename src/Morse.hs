@@ -1,8 +1,13 @@
 {-# LANGUAGE UnicodeSyntax #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FlexibleContexts #-}
 
 module Morse where
 
 import Data.Tuple
+import Encodable
 
 data Signal = Dit | Dah deriving (Eq)
 data Morse = Morse [Signal] deriving (Eq)
@@ -64,8 +69,10 @@ international =
         ('0', Morse [Dah])
     ]
 
-encode ∷ Encoding → Char → Maybe Morse
-encode encoding char = lookup char encoding
+instance Encodable Encoding Char Morse where
+    encode encoding char = lookup char encoding
+    decode encoding morse = lookup morse (map swap encoding)
 
-decode ∷ Encoding → Morse → Maybe Char
-decode encoding morse = lookup morse (map swap encoding)
+instance Encodable Encoding String [Morse] where
+    encode encoding string = sequence $ map (encode encoding) string
+    decode encoding morse = sequence $ map (decode encoding) morse
