@@ -1,4 +1,4 @@
-{-# LANGUAGE UnicodeSyntax, FunctionalDependencies #-}
+{-# LANGUAGE FunctionalDependencies, UnicodeSyntax #-}
 
 module Encodable where
 

@@ -1,8 +1,4 @@
-{-# LANGUAGE UnicodeSyntax #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE TypeSynonymInstances #-}
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE FlexibleInstances, MultiParamTypeClasses, TypeSynonymInstances, UnicodeSyntax #-}
 
 module Morse where
 
