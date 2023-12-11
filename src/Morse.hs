@@ -13,15 +13,8 @@ instance Show Signal where
     show Dit = "·"
     show Dah = "−"
 
-instance Read Signal where
-    readsPrec _ "·" = [(Dit, "")]
-    readsPrec _ "−" = [(Dah, "")]
-
 instance Show Morse where
     show (Morse a) = a >>= show
-
-instance Read Morse where
-    readsPrec _ code = [(Morse [signal | symbol ← code, signal ← read [symbol]], "")]
 
 international ∷ Encoding
 international =
